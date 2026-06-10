@@ -63,7 +63,39 @@ const applyLeave = async (req, res) => {
     }
 
 };
+const getLeaveHistory = async (req, res) => {
+
+    try {
+
+        const userId = req.user.id;
+
+        const query = `
+            SELECT *
+            FROM leave_requests
+            WHERE user_id = $1
+            ORDER BY created_at DESC
+        `;
+
+        const result = await pool.query(query, [userId]);
+
+        return res.status(200).json({
+            success: true,
+            leaves: result.rows
+        });
+
+    } catch (error) {
+
+        console.log(error);
+
+        return res.status(500).json({
+            success: false,
+            message: "Internal Server Error"
+        });
+
+    }
+
+};
 
 module.exports = {
-    applyLeave
+    applyLeave,getLeaveHistory
 };

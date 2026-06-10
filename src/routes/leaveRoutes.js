@@ -5,7 +5,7 @@ const router = express.Router();
 const verifyToken = require("../middleware/authMiddleware");
 
 const {
-    applyLeave
+    applyLeave,getLeaveHistory
 } = require("../controllers/leaveController");
 
 router.post(
@@ -13,5 +13,8 @@ router.post(
     verifyToken,
     applyLeave
 );
-
+router.get(
+    "/history",
+    verifyToken,getLeaveHistory
+);
 module.exports = router;
