@@ -96,6 +96,67 @@ const getLeaveHistory = async (req, res) => {
 
 };
 
+const getDashboard = async (req, res) => {
+
+    try {
+
+        const userId = req.user.id;
+
+        // Total available leaves
+        const totalLeaves = 20;
+
+        // Count approved leaves
+        const approvedResult = await pool.query(
+            `SELECT COUNT(*) 
+             FROM leave_requests
+             WHERE user_id = $1
+             AND status = 'Approved'`,
+            [userId]
+        );
+
+        // Count pending leaves
+        const pendingResult = await pool.query(
+            `SELECT COUNT(*)
+             FROM leave_requests
+             WHERE user_id = $1
+             AND status = 'Pending'`,
+            [userId]
+        );
+
+        const leavesTaken = parseInt(
+            approvedResult.rows[0].count
+        );
+
+        const pendingLeaves = parseInt(
+            pendingResult.rows[0].count
+        );
+
+        const remainingLeaves =
+            totalLeaves - leavesTaken;
+
+        return res.status(200).json({
+            success: true,
+            dashboard: {
+                totalLeaves,
+                leavesTaken,
+                pendingLeaves,
+                remainingLeaves
+            }
+        });
+
+    } catch (error) {
+
+        console.log(error);
+
+        return res.status(500).json({
+            success: false,
+            message: "Internal Server Error"
+        });
+
+    }
+
+};
+
 module.exports = {
-    applyLeave,getLeaveHistory
+    applyLeave,getLeaveHistory,getDashboard
 };
