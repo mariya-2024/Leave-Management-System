@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Employee Dashboard</title>
+
+    <link rel="stylesheet"
+          href="css/employee-dashboard.css">
+
+</head>
+
+<body>
+
+    <!-- Sidebar -->
+
+    <aside class="sidebar">
+
+        <div class="sidebar-top">
+
+            <div class="brand">
+
+                <img
+                    src="assets/logo.png"
+                    alt="LeaveEase Logo"
+                    class="logo">
+
+                <span>LeaveEase</span>
+
+            </div>
+
+            <nav>
+
+                <ul>
+
+                    <li class="active">
+                        Dashboard
+                    </li>
+
+                    <li id="applyLeaveBtn">
+                        Apply Leave
+                    </li>
+
+                    <li id="myLeavesBtn">
+                        My Leaves
+                    </li>
+
+                    <li>
+                        Calendar
+                    </li>
+
+                </ul>
+
+            </nav>
+
+        </div>
+
+        <div class="sidebar-bottom">
+
+            <div class="profile-section">
+
+                <p id="employeeName">
+                    John Doe
+                </p>
+
+                <span>
+                    Employee
+                </span>
+
+            </div>
+
+            <button id="logoutBtn">
+
+                Logout
+
+            </button>
+
+        </div>
+
+    </aside>
+
+    <!-- Main Content -->
+
+    <main class="main-content">
+
+        <!-- Top -->
+
+        <header class="top-header">
+
+            <div>
+
+                <h1>
+
+                    Good Morning,
+                    <span id="welcomeName">
+                        John
+                    </span>
+                    👋
+
+                </h1>
+
+                <p id="todayDate">
+                    Tuesday, 10 June 2025
+                </p>
+
+            </div>
+
+            <button
+                class="apply-btn"
+                id="applyTopBtn">
+
+                Apply for Leave
+
+            </button>
+
+        </header>
+
+        <!-- Pending Banner -->
+
+        <section class="pending-banner">
+
+            You have
+
+            <strong id="pendingCount">
+
+                1
+
+            </strong>
+
+            pending leave request awaiting approval.
+
+        </section>
+
+        <!-- Cards -->
+
+        <section class="stats-grid">
+
+            <div class="stat-card">
+
+                <p>Total Leaves</p>
+
+                <h2 id="totalLeaves">
+
+                    24
+
+                </h2>
+
+            </div>
+
+            <div class="stat-card">
+
+                <p>Leaves Taken</p>
+
+                <h2 id="takenLeaves">
+
+                    9
+
+                </h2>
+
+            </div>
+
+            <div class="stat-card">
+
+                <p>Remaining</p>
+
+                <h2 id="remainingLeaves">
+
+                    15
+
+                </h2>
+
+            </div>
+
+            <div class="stat-card">
+
+                <p>Pending</p>
+
+                <h2 id="pendingLeaves">
+
+                    1
+
+                </h2>
+
+            </div>
+
+        </section>
+
+        <!-- Bottom -->
+
+        <section class="bottom-grid">
+
+            <!-- Recent Requests -->
+
+            <div class="recent-card">
+
+                <div class="card-header">
+
+                    <h2>
+
+                        Recent Requests
+
+                    </h2>
+
+                    <span id="viewAllBtn">
+
+                        View All →
+
+                    </span>
+
+                </div>
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>Type</th>
+
+                            <th>Dates</th>
+
+                            <th>Days</th>
+
+                            <th>Status</th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody id="recentTableBody">
+
+                        <!-- Filled by JS -->
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+            <!-- Leave Balance -->
+
+            <div class="balance-card">
+
+                <h2>
+
+                    Leave Balance
+
+                </h2>
+
+                <div id="balanceContainer">
+
+                    <!-- Filled by JS -->
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <script src="js/employee-dashboard.js"></script>
+
+</body>
+
+</html>

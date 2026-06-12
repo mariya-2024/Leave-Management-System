@@ -8,7 +8,9 @@ const checkManager=require("../middleware/roleMiddleware");
 
 const {
     getPendingRequests,
-    getEmployeeLeaveHistory
+    getEmployeeLeaveHistory,
+    approveLeave,
+    rejectLeave
 } = require("../controllers/managerController");
 
 router.get(
@@ -22,6 +24,19 @@ router.get("/employee/:id/leaves",
     verifyToken,
     checkManager,
     getEmployeeLeaveHistory
+);
+
+router.put("/approve/:id",
+    verifyToken,
+    checkManager,
+    approveLeave
+)
+
+router.put(
+    "/reject/:id",
+    verifyToken,
+    checkManager,
+    rejectLeave
 );
 
 module.exports = router;

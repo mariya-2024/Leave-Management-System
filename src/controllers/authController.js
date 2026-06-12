@@ -107,7 +107,9 @@ console.log("Generated Token:", token);
         return res.json({
             success: true,
             message: "Login successful",
-            token:token
+            token:token,
+            role:user.role,
+            name:user.name
         });
 
     }

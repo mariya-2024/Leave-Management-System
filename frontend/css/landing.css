@@ -1,0 +1,198 @@
+/* Reset */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Entire Page */
+
+html,
+body {
+
+    width: 100%;
+    height: 100%;
+
+    font-family: Georgia, serif;
+
+    background: #F5F1ED;
+
+    color: #4B2E1F;
+}
+
+/* Center Content */
+
+body {
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    min-height: 100vh;
+}
+
+/* Main Container */
+
+.container {
+
+    width: 100%;
+    max-width: 1000px;
+
+    text-align: center;
+
+    padding: 40px;
+}
+
+/* Logo */
+
+.logo {
+
+    width: 100px;
+    height: 100px;
+
+    margin: auto;
+
+    border-radius: 18px;
+
+    background: #efece6;
+}
+
+/* Heading */
+
+h1 {
+
+    margin-top: 18px;
+
+    font-size: 50px;
+
+    font-weight: 500;
+
+    color: #4B2E1F;
+}
+
+/* Subtitle */
+
+.subtitle {
+
+    margin-top: 18px;
+
+    font-size: 22px;
+
+    font-weight: 200;
+
+    color: #9A6C45;
+
+    line-height: 1.7;
+}
+
+/* Cards */
+
+.cards {
+
+    margin-top: 60px;
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 40px;
+
+    flex-wrap: wrap;
+}
+
+/* Individual Card */
+
+.role-card {
+
+    width: 340px;
+
+    height: 320px;
+
+    border: 3px solid #D7B48C;
+
+    border-radius: 20px;
+
+    background: transparent;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+    cursor: pointer;
+
+    transition: 0.3s ease;
+}
+
+/* Hover */
+
+.role-card:hover {
+
+    transform: translateY(-6px);
+
+    background: #FBF7F3;
+
+    box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.08);
+}
+
+.role-image{
+
+    width:150px;
+    height:150px;
+
+    object-fit:contain;
+
+    margin-bottom:8px;
+}
+
+/* Card Heading */
+
+.role-card h2 {
+
+    font-size: 30px;
+
+    font-weight: 700;
+
+    margin-bottom: 12px;
+
+    color: #7b4f38;
+}
+
+/* Card Description */
+
+.role-card p {
+
+    font-size: 18px;
+
+    font-weight: 500;
+
+    line-height: 1.5;
+
+    color: #A06E46;
+}
+
+/* Responsive */
+
+@media (max-width: 768px) {
+
+    h1 {
+        font-size: 42px;
+    }
+
+    .subtitle {
+
+        font-size: 18px;
+    }
+
+    .role-card {
+
+        width: 90%;
+    }
+
+}

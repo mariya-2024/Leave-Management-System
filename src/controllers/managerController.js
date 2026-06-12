@@ -88,7 +88,73 @@ const getEmployeeLeaveHistory = async (req, res) => {
 
 };
 
+const approveLeave = async (req, res) => {
+
+    try {
+
+        const leaveId = req.params.id;
+
+        const query = `
+            UPDATE leave_requests
+            SET status = 'Approved'
+            WHERE id = $1
+        `;
+
+        await pool.query(query, [leaveId]);
+
+        return res.status(200).json({
+            success: true,
+            message: "Leave approved successfully"
+        });
+
+    } catch (error) {
+
+        console.log(error);
+
+        return res.status(500).json({
+            success: false,
+            message: "Internal Server Error"
+        });
+
+    }
+
+};
+
+const rejectLeave = async (req, res) => {
+
+    try {
+
+        const leaveId = req.params.id;
+
+        const query = `
+            UPDATE leave_requests
+            SET status = 'Rejected'
+            WHERE id = $1
+        `;
+
+        await pool.query(query, [leaveId]);
+
+        return res.status(200).json({
+            success: true,
+            message: "Leave rejected successfully"
+        });
+
+    } catch (error) {
+
+        console.log(error);
+
+        return res.status(500).json({
+            success: false,
+            message: "Internal Server Error"
+        });
+
+    }
+
+};
+
 module.exports = {
     getPendingRequests,
-    getEmployeeLeaveHistory
+    getEmployeeLeaveHistory,
+    approveLeave,
+    rejectLeave
 };

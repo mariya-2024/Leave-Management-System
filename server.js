@@ -1,3 +1,4 @@
+const cors=require("cors");
 const authRoutes = require("./src/routes/authRoutes");
 const leaveRoutes=require("./src/routes/leaveRoutes");
 const bcrypt=require("bcrypt");
@@ -7,6 +8,7 @@ const managerRoutes= require("./src/routes/managerRoutes");
 
 const app = express();
 app.use(express.json());//to understand json 
+app.use(cors());
 app.use("/api/auth", authRoutes);
 app.use("/api/leaves",leaveRoutes);
 app.use("/api/manager",managerRoutes);
