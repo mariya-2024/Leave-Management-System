@@ -1,100 +1,250 @@
 const pool = require("../config/db");
 
+// ======================================
+// Apply Leave
+// ======================================
+
 const applyLeave = async (req, res) => {
 
     try {
 
-        // Get logged-in user's ID from JWT
+        // Logged-in user
         const userId = req.user.id;
 
-        // Get data sent from frontend
-        const { leave_type, start_date, end_date, reason } = req.body;
-
-        // Check if all fields are provided
-        if (!leave_type || !start_date || !end_date || !reason) {
-            return res.status(400).json({
-                success: false,
-                message: "All fields are required"
-            });
-        }
-
-        // Check date validation
-        if (new Date(end_date) < new Date(start_date)) {
-            return res.status(400).json({
-                success: false,
-                message: "End date cannot be before start date"
-            });
-        }
-
-        // SQL Query
-        const query = `
-            INSERT INTO leave_requests
-            (user_id, leave_type, start_date, end_date, reason)
-            VALUES ($1, $2, $3, $4, $5)
-        `;
-
-        // Values for placeholders
-        const values = [
-            userId,
+        // Request body
+        const {
             leave_type,
             start_date,
             end_date,
             reason
+        } = req.body;
+
+        // Validate fields
+        if (
+            !leave_type ||
+            !start_date ||
+            !end_date ||
+            !reason
+        ) {
+
+            return res.status(400).json({
+                success: false,
+                message: "All fields are required"
+            });
+
+        }
+
+        // Validate dates
+        if (
+            new Date(end_date) <
+            new Date(start_date)
+        ) {
+
+            return res.status(400).json({
+                success: false,
+                message: "End date cannot be before start date"
+            });
+
+        }
+
+        // ----------------------------------
+        // Calculate leave days
+        // ----------------------------------
+
+        const start = new Date(start_date);
+
+        const end = new Date(end_date);
+
+        const days =
+            Math.floor(
+                (end - start) /
+                (1000 * 60 * 60 * 24)
+            ) + 1;
+
+        // ----------------------------------
+        // Check already approved leave days
+        // ----------------------------------
+
+        const approvedResult =
+            await pool.query(
+
+                `
+                SELECT
+                COALESCE(SUM(days),0)
+                AS total
+
+                FROM leave_requests
+
+                WHERE user_id = $1
+
+                AND status = 'Approved'
+                `,
+
+                [userId]
+
+            );
+
+        const usedDays =
+            parseInt(
+                approvedResult.rows[0].total
+            );
+
+        const TOTAL_LEAVES = 20;
+
+        const remaining =
+            TOTAL_LEAVES - usedDays;
+
+        // Prevent exceeding leave balance
+
+        if (days > remaining) {
+
+            return res.status(400).json({
+
+                success: false,
+
+                message:
+                    `Only ${remaining} leave days remaining`
+
+            });
+
+        }
+
+        // ----------------------------------
+        // Insert leave request
+        // ----------------------------------
+
+        const query = `
+
+            INSERT INTO leave_requests
+
+            (
+                user_id,
+                leave_type,
+                start_date,
+                end_date,
+                reason,
+                days
+            )
+
+            VALUES
+
+            (
+                $1,
+                $2,
+                $3,
+                $4,
+                $5,
+                $6
+            )
+
+        `;
+
+        const values = [
+
+            userId,
+
+            leave_type,
+
+            start_date,
+
+            end_date,
+
+            reason,
+
+            days
+
         ];
 
-        // Execute query
         await pool.query(query, values);
 
-        // Success response
+        // Success
+
         return res.status(201).json({
+
             success: true,
-            message: "Leave applied successfully"
+
+            message:
+                "Leave applied successfully"
+
         });
 
-    } catch (error) {
+    }
+
+    catch (error) {
 
         console.log(error);
 
         return res.status(500).json({
+
             success: false,
-            message: "Internal Server Error"
+
+            message:
+                "Internal Server Error"
+
         });
 
     }
 
 };
+
+
+// ======================================
+// Leave History
+// ======================================
+
 const getLeaveHistory = async (req, res) => {
 
     try {
 
         const userId = req.user.id;
 
-        const query = `
-            SELECT *
-            FROM leave_requests
-            WHERE user_id = $1
-            ORDER BY created_at DESC
-        `;
+        const result = await pool.query(
 
-        const result = await pool.query(query, [userId]);
+            `
+            SELECT *
+
+            FROM leave_requests
+
+            WHERE user_id = $1
+
+            ORDER BY created_at DESC
+            `,
+
+            [userId]
+
+        );
 
         return res.status(200).json({
+
             success: true,
+
             leaves: result.rows
+
         });
 
-    } catch (error) {
+    }
+
+    catch (error) {
 
         console.log(error);
 
         return res.status(500).json({
+
             success: false,
-            message: "Internal Server Error"
+
+            message:
+                "Internal Server Error"
+
         });
 
     }
 
 };
+
+
+// ======================================
+// Employee Dashboard
+// ======================================
 
 const getDashboard = async (req, res) => {
 
@@ -102,61 +252,106 @@ const getDashboard = async (req, res) => {
 
         const userId = req.user.id;
 
-        // Total available leaves
-        const totalLeaves = 20;
+        const TOTAL_LEAVES = 20;
 
-        // Count approved leaves
-        const approvedResult = await pool.query(
-            `SELECT COUNT(*) 
-             FROM leave_requests
-             WHERE user_id = $1
-             AND status = 'Approved'`,
-            [userId]
-        );
+        // Approved leave days
 
-        // Count pending leaves
-        const pendingResult = await pool.query(
-            `SELECT COUNT(*)
-             FROM leave_requests
-             WHERE user_id = $1
-             AND status = 'Pending'`,
-            [userId]
-        );
+        const approvedResult =
+            await pool.query(
 
-        const leavesTaken = parseInt(
-            approvedResult.rows[0].count
-        );
+                `
+                SELECT
+                COALESCE(SUM(days),0)
+                AS total
 
-        const pendingLeaves = parseInt(
-            pendingResult.rows[0].count
-        );
+                FROM leave_requests
+
+                WHERE user_id = $1
+
+                AND status = 'Approved'
+                `,
+
+                [userId]
+
+            );
+
+        // Pending requests
+
+        const pendingResult =
+            await pool.query(
+
+                `
+                SELECT COUNT(*)
+
+                FROM leave_requests
+
+                WHERE user_id = $1
+
+                AND status = 'Pending'
+                `,
+
+                [userId]
+
+            );
+
+        const leavesTaken =
+            parseInt(
+                approvedResult.rows[0].total
+            );
+
+        const pendingLeaves =
+            parseInt(
+                pendingResult.rows[0].count
+            );
 
         const remainingLeaves =
-            totalLeaves - leavesTaken;
+            TOTAL_LEAVES - leavesTaken;
 
         return res.status(200).json({
+
             success: true,
+
             dashboard: {
-                totalLeaves,
+
+                totalLeaves:
+                    TOTAL_LEAVES,
+
                 leavesTaken,
+
                 pendingLeaves,
+
                 remainingLeaves
+
             }
+
         });
 
-    } catch (error) {
+    }
+
+    catch (error) {
 
         console.log(error);
 
         return res.status(500).json({
+
             success: false,
-            message: "Internal Server Error"
+
+            message:
+                "Internal Server Error"
+
         });
 
     }
 
 };
 
+
 module.exports = {
-    applyLeave,getLeaveHistory,getDashboard
+
+    applyLeave,
+
+    getLeaveHistory,
+
+    getDashboard
+
 };

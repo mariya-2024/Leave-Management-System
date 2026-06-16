@@ -199,8 +199,7 @@ async function loadRecentRequests() {
 
                             <td class="status-${leave.status.toLowerCase()}">
                                 ${leave.status}
-                            </td>
-
+                            
                         </tr>
 
                     `;
