@@ -1,5 +1,5 @@
 // Get elements
-
+console.log("LOGIN JS LOADED");
 const loginForm = document.getElementById("loginForm");
 
 const emailInput = document.getElementById("email");
@@ -62,6 +62,7 @@ togglePassword.addEventListener("click", () => {
 // -------------------------------
 
 loginForm.addEventListener("submit", async (e) => {
+    console.log("FORM SUBMITTED");
 
     e.preventDefault();
 
@@ -100,8 +101,10 @@ loginForm.addEventListener("submit", async (e) => {
                 })
             }
         );
+        console.log(response);
 
         const data = await response.json();
+        console.log(data);
 
         if (!response.ok) {
 
@@ -153,10 +156,11 @@ loginForm.addEventListener("submit", async (e) => {
         errorMessage.textContent =
             "Server Error";
 
-    }
+    
 
     loginBtn.disabled = false;
 
     loginBtn.textContent = "Sign In";
+    }
 
 });

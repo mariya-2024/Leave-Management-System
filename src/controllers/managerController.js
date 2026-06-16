@@ -151,9 +151,94 @@ const rejectLeave = async (req, res) => {
     }
 
 };
+const getManagerDashboard = async (req, res) => {
 
+    try {
+
+        // Pending Count
+        const pendingResult = await pool.query(`
+            SELECT COUNT(*)
+            FROM leave_requests
+            WHERE status = 'Pending'
+        `);
+
+        // Approved Count
+        const approvedResult = await pool.query(`
+            SELECT COUNT(*)
+            FROM leave_requests
+            WHERE status = 'Approved'
+        `);
+
+        // Rejected Count
+        const rejectedResult = await pool.query(`
+            SELECT COUNT(*)
+            FROM leave_requests
+            WHERE status = 'Rejected'
+        `);
+
+        // Employees on leave today
+        const onLeaveTodayResult = await pool.query(`
+            SELECT
+                users.name,
+                users.email,
+                leave_requests.leave_type,
+                leave_requests.start_date,
+                leave_requests.end_date
+            FROM leave_requests
+            JOIN users
+            ON users.id = leave_requests.user_id
+            WHERE leave_requests.status = 'Approved'
+            AND CURRENT_DATE
+            BETWEEN leave_requests.start_date
+            AND leave_requests.end_date
+        `);
+
+        return res.status(200).json({
+
+            success: true,
+
+            dashboard: {
+
+                pending: parseInt(
+                    pendingResult.rows[0].count
+                ),
+
+                approved: parseInt(
+                    approvedResult.rows[0].count
+                ),
+
+                rejected: parseInt(
+                    rejectedResult.rows[0].count
+                ),
+
+                onLeaveToday:
+                    onLeaveTodayResult.rows.length
+
+            },
+
+            onLeaveToday:
+                onLeaveTodayResult.rows
+
+        });
+
+    } catch (error) {
+
+        console.log(error);
+
+        return res.status(500).json({
+
+            success: false,
+
+            message: "Internal Server Error"
+
+        });
+
+    }
+
+};
 module.exports = {
     getPendingRequests,
+    getManagerDashboard,
     getEmployeeLeaveHistory,
     approveLeave,
     rejectLeave

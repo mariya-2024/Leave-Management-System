@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Leave Calendar
+    </title>
+
+    <link rel="stylesheet"
+        href="css/calendar.css">
+
+</head>
+
+<body>
+
+    <!-- Sidebar -->
+
+    <aside class="sidebar">
+
+        <div class="sidebar-top">
+
+            <div class="brand">
+
+                <img
+                    src="assets/logo.png"
+                    class="logo"
+                    alt="Logo">
+
+                <span>
+                    LeaveEase
+                </span>
+
+            </div>
+
+            <ul>
+
+                <li id="dashboardBtn">
+                    Dashboard
+                </li>
+
+                <li id="applyLeaveBtn">
+                    Apply Leave
+                </li>
+
+                <li id="myLeavesBtn">
+                    My Leaves
+                </li>
+
+                <li class="active" id="calendarBtn">
+                    Calendar
+                </li>
+
+            </ul>
+
+        </div>
+
+        <div class="sidebar-bottom">
+
+            <div class="profile-section">
+
+                <p id="employeeName">
+                    John Doe
+                </p>
+
+                <span>
+                    Employee
+                </span>
+
+            </div>
+
+            <button id="logoutBtn">
+
+                Logout
+
+            </button>
+
+        </div>
+
+    </aside>
+
+    <!-- Main -->
+
+    <main class="main-content">
+
+        <div class="calendar-container">
+
+            <!-- Header -->
+
+            <div class="calendar-header">
+
+                <div>
+
+                    <h1>
+
+                        Leave Calendar
+
+                    </h1>
+
+                    <p class="subtitle">
+
+                        View your approved, pending and rejected leave requests.
+
+                    </p>
+
+                </div>
+
+                <div class="selectors">
+
+                    <select id="monthSelect">
+
+                        <option value="0">January</option>
+                        <option value="1">February</option>
+                        <option value="2">March</option>
+                        <option value="3">April</option>
+                        <option value="4">May</option>
+                        <option value="5">June</option>
+                        <option value="6">July</option>
+                        <option value="7">August</option>
+                        <option value="8">September</option>
+                        <option value="9">October</option>
+                        <option value="10">November</option>
+                        <option value="11">December</option>
+
+                    </select>
+
+                    <select id="yearSelect">
+
+                        <!-- Filled by JS -->
+
+                    </select>
+
+                </div>
+
+            </div>
+
+            <!-- Legend -->
+
+            <div class="legend">
+
+                <div class="legend-item">
+
+                    <span class="legend-dot approved"></span>
+
+                    Approved
+
+                </div>
+
+                <div class="legend-item">
+
+                    <span class="legend-dot pending"></span>
+
+                    Pending
+
+                </div>
+
+                <div class="legend-item">
+
+                    <span class="legend-dot rejected"></span>
+
+                    Rejected
+
+                </div>
+
+            </div>
+
+            <!-- Calendar -->
+
+            <div class="calendar-card">
+
+                <div class="calendar-days">
+
+                    <div>Sun</div>
+                    <div>Mon</div>
+                    <div>Tue</div>
+                    <div>Wed</div>
+                    <div>Thu</div>
+                    <div>Fri</div>
+                    <div>Sat</div>
+
+                </div>
+
+                <div
+                    class="calendar-grid"
+                    id="calendarGrid">
+
+                    <!-- Filled by JS -->
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+    <script src="js/auth.js"></script>
+
+    <script src="js/calendar.js"></script>
+
+</body>
+
+</html>

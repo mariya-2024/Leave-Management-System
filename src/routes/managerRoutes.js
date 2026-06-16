@@ -10,7 +10,8 @@ const {
     getPendingRequests,
     getEmployeeLeaveHistory,
     approveLeave,
-    rejectLeave
+    rejectLeave,
+    getManagerDashboard
 } = require("../controllers/managerController");
 
 router.get(
@@ -19,7 +20,11 @@ router.get(
     checkManager,
     getPendingRequests
 );
-
+router.get(
+    "/dashboard",
+    verifyToken,
+    getManagerDashboard
+);
 router.get("/employee/:id/leaves",
     verifyToken,
     checkManager,

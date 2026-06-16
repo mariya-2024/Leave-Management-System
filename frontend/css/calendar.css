@@ -1,0 +1,596 @@
+/* ===================================== */
+/* RESET */
+/* ===================================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html,
+body{
+
+    width:100%;
+    min-height:100vh;
+
+    font-family:"Segoe UI",sans-serif;
+
+    background:#f5f1ed;
+
+    color:#4b2e1f;
+
+}
+
+body{
+
+    display:flex;
+
+    min-height:100vh;
+
+}
+
+/* ===================================== */
+/* SIDEBAR */
+/* ===================================== */
+
+.sidebar{
+
+    width:270px;
+
+    min-height:100vh;
+
+    background:#cf8b2d;
+
+    color:white;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:space-between;
+
+    padding:30px 20px;
+
+}
+
+.brand{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:14px;
+
+    margin-bottom:50px;
+
+}
+
+.logo{
+
+    width:58px;
+
+    height:58px;
+
+    object-fit:contain;
+
+    background:white;
+
+    border-radius:14px;
+
+    padding:6px;
+
+}
+
+.brand span{
+
+    font-size:30px;
+
+    font-weight:700;
+
+}
+
+.sidebar ul{
+
+    list-style:none;
+
+}
+
+.sidebar li{
+
+    padding:16px 18px;
+
+    margin-bottom:12px;
+
+    border-radius:12px;
+
+    font-size:19px;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.sidebar li:hover{
+
+    background:rgba(255,255,255,.15);
+
+}
+
+.sidebar li.active{
+
+    background:white;
+
+    color:#cf8b2d;
+
+    font-weight:700;
+
+}
+
+/* ===================================== */
+
+.profile-section{
+
+    margin-bottom:20px;
+
+}
+
+.profile-section p{
+
+    font-size:22px;
+
+    font-weight:700;
+
+}
+
+.profile-section span{
+
+    font-size:16px;
+
+}
+
+#logoutBtn{
+
+    width:100%;
+
+    height:52px;
+
+    border:none;
+
+    border-radius:12px;
+
+    background:white;
+
+    color:#cf8b2d;
+
+    font-size:18px;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+}
+
+/* ===================================== */
+/* MAIN */
+/* ===================================== */
+
+.main-content{
+
+    flex:1;
+
+    min-height:100vh;
+
+    background:#f5f1ed;
+
+    padding:45px;
+
+    display:flex;
+
+    justify-content:center;
+
+}
+
+/* ===================================== */
+
+.calendar-container{
+
+    width:100%;
+
+    max-width:1250px;
+
+}
+
+/* ===================================== */
+
+.calendar-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:30px;
+
+}
+
+.calendar-header h1{
+
+    font-size:46px;
+
+    margin-bottom:8px;
+
+}
+
+.subtitle{
+
+    font-size:20px;
+
+    color:#8d6542;
+
+}
+
+/* ===================================== */
+
+.selectors{
+
+    display:flex;
+
+    gap:16px;
+
+}
+
+.selectors select{
+
+    padding:14px 18px;
+
+    font-size:18px;
+
+    border-radius:12px;
+
+    border:1px solid #e1c59d;
+
+    background:white;
+
+    outline:none;
+
+}
+
+.selectors select:focus{
+
+    border-color:#cf8b2d;
+
+}
+
+/* ===================================== */
+/* LEGEND */
+/* ===================================== */
+
+.legend{
+
+    display:flex;
+
+    gap:35px;
+
+    margin-bottom:30px;
+
+    font-size:18px;
+
+    font-weight:600;
+
+}
+
+.legend-item{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+}
+
+.legend-dot{
+
+    width:18px;
+
+    height:18px;
+
+    border-radius:50%;
+
+}
+
+.legend-dot.approved{
+
+    background:#2e9d52;
+
+}
+
+.legend-dot.pending{
+
+    background:#d89b18;
+
+}
+
+.legend-dot.rejected{
+
+    background:#d84a4a;
+
+}
+
+/* ===================================== */
+/* CALENDAR CARD */
+/* ===================================== */
+
+.calendar-card{
+
+    background:white;
+
+    border-radius:22px;
+
+    padding:25px;
+
+    box-shadow:0 5px 18px rgba(0,0,0,.05);
+
+}
+/* ===================================== */
+/* DAYS HEADER */
+/* ===================================== */
+
+.calendar-days{
+
+    display:grid;
+
+    grid-template-columns:repeat(7,1fr);
+
+    gap:15px;
+
+    margin-bottom:15px;
+
+}
+
+.calendar-days div{
+
+    text-align:center;
+
+    font-size:20px;
+
+    font-weight:700;
+
+    color:#8d6542;
+
+    padding:12px 0;
+
+}
+
+/* ===================================== */
+/* CALENDAR GRID */
+/* ===================================== */
+
+.calendar-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(7,1fr);
+
+    gap:15px;
+
+}
+
+/* ===================================== */
+/* DAY CARD */
+/* ===================================== */
+
+.calendar-day{
+
+    min-height:120px;
+
+    background:#fcfaf7;
+
+    border:1px solid #ece2d4;
+
+    border-radius:16px;
+
+    padding:12px;
+
+    transition:.3s;
+
+    display:flex;
+
+    flex-direction:column;
+
+}
+
+.calendar-day:hover{
+
+    transform:translateY(-3px);
+
+    box-shadow:0 5px 15px rgba(0,0,0,.08);
+
+}
+
+.empty-day{
+
+    background:transparent;
+
+    border:none;
+
+    box-shadow:none;
+
+}
+
+/* ===================================== */
+/* DAY NUMBER */
+/* ===================================== */
+
+.day-number{
+
+    font-size:20px;
+
+    font-weight:700;
+
+    color:#4b2e1f;
+
+    margin-bottom:10px;
+
+}
+
+/* ===================================== */
+/* LEAVE BADGES */
+/* ===================================== */
+
+.leave-pill{
+
+    width:100%;
+
+    padding:6px 10px;
+
+    border-radius:20px;
+
+    font-size:13px;
+
+    font-weight:600;
+
+    text-align:center;
+
+    margin-top:5px;
+
+    color:white;
+
+    overflow:hidden;
+
+    white-space:nowrap;
+
+    text-overflow:ellipsis;
+
+}
+
+/* ===================================== */
+
+.leave-pill.approved{
+
+    background:#2e9d52;
+
+}
+
+.leave-pill.pending{
+
+    background:#d89b18;
+
+}
+
+.leave-pill.rejected{
+
+    background:#d84a4a;
+
+}
+
+/* ===================================== */
+/* TODAY */
+/* ===================================== */
+
+.today{
+
+    border:2px solid #cf8b2d;
+
+}
+
+/* ===================================== */
+/* RESPONSIVE */
+/* ===================================== */
+
+@media(max-width:1100px){
+
+    .calendar-header{
+
+        flex-direction:column;
+
+        align-items:flex-start;
+
+        gap:20px;
+
+    }
+
+}
+
+/* ===================================== */
+
+@media(max-width:768px){
+
+    .sidebar{
+
+        display:none;
+
+    }
+
+    .main-content{
+
+        padding:20px;
+
+    }
+
+    .calendar-header h1{
+
+        font-size:34px;
+
+    }
+
+    .subtitle{
+
+        font-size:17px;
+
+    }
+
+    .selectors{
+
+        flex-direction:column;
+
+        width:100%;
+
+    }
+
+    .selectors select{
+
+        width:100%;
+
+    }
+
+    .legend{
+
+        flex-wrap:wrap;
+
+        gap:15px;
+
+    }
+
+    .calendar-days div{
+
+        font-size:15px;
+
+    }
+
+    .day-number{
+
+        font-size:16px;
+
+    }
+
+    .calendar-day{
+
+        min-height:85px;
+
+        padding:8px;
+
+    }
+
+    .leave-pill{
+
+        font-size:11px;
+
+        padding:4px 6px;
+
+    }
+
+}

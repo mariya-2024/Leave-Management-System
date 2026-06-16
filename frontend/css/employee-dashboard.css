@@ -1,0 +1,714 @@
+/* ===================================== */
+/* RESET */
+/* ===================================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html,
+body{
+
+    width:100%;
+    min-height:100vh;
+
+    font-family:"Segoe UI",sans-serif;
+
+    background:#f5f1ed;
+
+    color:#4b2e1f;
+}
+
+/* ===================================== */
+/* BODY */
+/* ===================================== */
+
+body{
+
+    display:flex;
+
+    min-height:100vh;
+}
+
+/* ===================================== */
+/* SIDEBAR */
+/* ===================================== */
+
+.sidebar{
+
+    width:270px;
+
+    min-height:100vh;
+
+    background:#97512f;
+
+    color:white;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:space-between;
+
+    padding:30px 20px;
+
+}
+
+/* ===================================== */
+
+.brand{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:14px;
+
+    margin-bottom:50px;
+
+}
+
+.logo{
+
+    width:58px;
+
+    height:58px;
+
+    object-fit: contain;
+
+    background:white;
+
+    border-radius:14px;
+
+    padding:6px;
+}
+
+.brand span{
+
+    font-size:30px;
+
+    font-weight:700;
+}
+
+/* ===================================== */
+
+.sidebar ul{
+
+    list-style:none;
+}
+
+.sidebar li{
+
+    padding:16px 18px;
+
+    margin-bottom:12px;
+
+    border-radius:12px;
+
+    font-size:19px;
+
+    cursor:pointer;
+
+    transition:.3s;
+}
+
+.sidebar li:hover{
+
+    background:rgba(255,255,255,.15);
+}
+
+.sidebar li.active{
+
+    background:white;
+
+    color:#97512f;
+
+    font-weight:700;
+}
+
+/* ===================================== */
+
+.profile-section{
+
+    margin-bottom:20px;
+}
+
+.profile-section p{
+
+    font-size:22px;
+
+    font-weight:700;
+}
+
+.profile-section span{
+
+    font-size:16px;
+}
+
+/* ===================================== */
+
+#logoutBtn{
+
+    width:100%;
+
+    height:52px;
+
+    border:none;
+
+    border-radius:12px;
+
+    background:white;
+
+    color:#cf8b2d;
+
+    font-size:18px;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+    transition:.3s;
+}
+
+#logoutBtn:hover{
+
+    transform:translateY(-2px);
+}
+
+/* ===================================== */
+/* MAIN */
+/* ===================================== */
+
+.main-content{
+
+    flex:1;
+
+    min-height:100vh;
+
+    padding:40px 45px;
+
+    overflow:auto;
+}
+
+/* ===================================== */
+/* HEADER */
+/* ===================================== */
+
+.top-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:35px;
+}
+
+.top-header h1{
+
+    font-size:42px;
+
+    color:#4b2e1f;
+}
+
+.top-header p{
+
+    margin-top:10px;
+
+    font-size:18px;
+
+    color:#8d6542;
+}
+
+/* ===================================== */
+
+.apply-btn{
+
+    border:none;
+
+    background:#97512f;
+
+    color:white;
+
+    padding:16px 30px;
+
+    border-radius:12px;
+
+    font-size:18px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:.3s;
+}
+
+.apply-btn:hover{
+
+    transform:translateY(-2px);
+
+    background:#b9771e;
+}
+
+/* ===================================== */
+/* PENDING */
+/* ===================================== */
+
+.pending-banner{
+
+    background:#fff4e3;
+
+    border-left:6px solid #b96d04;
+
+    padding:18px 24px;
+
+    border-radius:12px;
+
+    font-size:19px;
+
+    margin-bottom:35px;
+}
+
+/* ===================================== */
+/* STATS */
+/* ===================================== */
+
+.stats-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(4,1fr);
+
+    gap:22px;
+
+    margin-bottom:35px;
+}
+
+.stat-card{
+
+    background:white;
+
+    border-radius:25px;
+
+    padding:28px;
+
+    box-shadow:0 4px 14px rgba(0,0,0,.05);
+
+    transition:.3s;
+}
+
+.stat-card:hover{
+
+    transform:translateY(-4px);
+}
+
+.stat-card p{
+
+    font-size:20px;
+
+    color:#44270e;
+
+    margin-bottom:15px;
+
+    font-weight: 100px;
+}
+
+.stat-card h2{
+
+    font-size:42px;
+
+    color:#9e6009;
+
+    font-weight:10px;
+}
+/* ===================================== */
+/* BOTTOM GRID */
+/* ===================================== */
+
+.bottom-grid{
+
+    display:grid;
+
+    grid-template-columns:2fr 1fr;
+
+    gap:24px;
+
+    margin-bottom:30px;
+
+}
+
+/* ===================================== */
+/* RECENT REQUESTS CARD */
+/* ===================================== */
+
+.recent-card{
+
+    background:white;
+
+    border-radius:18px;
+
+    padding:28px;
+
+    box-shadow:0 4px 14px rgba(0,0,0,.05);
+
+}
+
+.card-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:20px;
+
+}
+
+.card-header h2{
+
+    font-size:30px;
+
+    color:#863a15;
+
+}
+
+.card-header span{
+
+    color:#cf8b2d;
+
+    font-size:17px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+}
+
+/* ===================================== */
+/* TABLE */
+/* ===================================== */
+
+table{
+
+    width:100%;
+
+    border-collapse:separate;
+
+}
+
+thead{
+
+    background:#fbf5ee;
+
+}
+
+th{
+
+    padding:16px;
+
+    text-align:left;
+
+    font-size:17px;
+
+    color:#7d5a3d;
+
+    font-weight:700;
+
+}
+
+td{
+
+    padding:18px 16px;
+
+    border-top:1px solid #ece2d4;
+
+    font-size:16px;
+
+}
+
+tbody tr:hover{
+
+    background:#fcfaf7;
+
+}
+
+/* ===================================== */
+/* STATUS COLORS */
+/* ===================================== */
+
+.status-approved{
+
+    color:#1d8f43;
+
+    font-weight:700;
+
+}
+
+.status-pending{
+
+    color:#654a1c;
+
+    font-weight:700;
+
+}
+
+.status-rejected{
+
+    color:#d62828;
+
+    font-weight:700;
+
+}
+
+/* ===================================== */
+/* LEAVE BALANCE CARD */
+/* ===================================== */
+
+.balance-card{
+
+    background:white;
+
+    border-radius:18px;
+
+    padding:28px;
+
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+}
+
+.balance-card h2{
+
+    font-size:28px;
+
+    margin-bottom:24px;
+
+    color:#863a15;
+
+}
+
+/* ===================================== */
+/* BALANCE ITEMS */
+/* ===================================== */
+
+.balance-item{
+
+    margin-bottom:24px;
+
+}
+
+.balance-item:last-child{
+
+    margin-bottom:0;
+
+}
+
+.balance-title{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    margin-bottom:8px;
+
+    font-size:17px;
+
+    font-weight:300;
+
+}
+
+.progress{
+
+    width:100%;
+
+    height:12px;
+
+    background:#efe5d7;
+
+    border-radius:20px;
+
+    overflow:hidden;
+
+}
+
+.progress-bar{
+
+    height:100%;
+
+    background:#cf8b2d;
+
+    border-radius:20px;
+
+}
+
+/* ===================================== */
+/* SCROLLBAR */
+/* ===================================== */
+
+::-webkit-scrollbar{
+
+    width:8px;
+
+}
+
+::-webkit-scrollbar-track{
+
+    background:#f5f1ed;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+    background:#cf8b2d;
+
+    border-radius:20px;
+
+}
+
+/* ===================================== */
+/* RESPONSIVE */
+/* ===================================== */
+
+@media(max-width:1100px){
+
+    .stats-grid{
+
+        grid-template-columns:repeat(2,1fr);
+
+    }
+
+    .bottom-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+}
+
+/* ===================================== */
+
+@media(max-width:768px){
+
+    body{
+
+        flex-direction:column;
+
+    }
+
+    .sidebar{
+
+        width:100%;
+
+        min-height:auto;
+
+        padding:20px;
+
+    }
+
+    .brand{
+
+        justify-content:center;
+
+    }
+
+    .sidebar ul{
+
+        display:flex;
+
+        justify-content:center;
+
+        gap:10px;
+
+        flex-wrap:wrap;
+
+    }
+
+    .sidebar li{
+
+        margin-bottom:0;
+
+    }
+
+    .sidebar-bottom{
+
+        margin-top:20px;
+
+    }
+
+    .main-content{
+
+        padding:25px;
+
+    }
+
+    .top-header{
+
+        flex-direction:column;
+
+        align-items:flex-start;
+
+        gap:20px;
+
+    }
+
+    .top-header h1{
+
+        font-size:34px;
+
+    }
+
+    .stats-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+}
+
+/* ===================================== */
+/* SMALL MOBILE */
+/* ===================================== */
+
+@media(max-width:500px){
+
+    .logo{
+
+        width:48px;
+
+        height:48px;
+
+    }
+
+    .brand span{
+
+        font-size:24px;
+
+    }
+
+    .top-header h1{
+
+        font-size:28px;
+
+    }
+
+    .pending-banner{
+
+        font-size:16px;
+
+    }
+
+    .card-header h2{
+
+        font-size:22px;
+
+    }
+
+    .balance-card h2{
+
+        font-size:22px;
+
+    }
+
+}

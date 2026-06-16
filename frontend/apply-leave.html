@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Apply Leave
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="css/apply-leave.css">
+
+</head>
+
+<body>
+
+    <!-- Sidebar -->
+
+    <aside class="sidebar">
+
+        <div class="sidebar-top">
+
+            <div class="brand">
+
+                <img
+                    src="assets/logo.png"
+                    class="logo"
+                    alt="Logo">
+
+                <span>
+                    LeaveEase
+                </span>
+
+            </div>
+
+            <ul>
+
+                <li
+                    id="dashboardBtn">
+                    Dashboard
+                </li>
+
+                <li
+                    class="active">
+                    Apply Leave
+                </li>
+
+                <li
+                    id="myLeavesBtn">
+                    My Leaves
+                </li>
+
+                <li id="calendarBtn">
+                    Calendar
+                </li>
+
+            </ul>
+
+        </div>
+
+        <div class="sidebar-bottom">
+
+            <div class="profile-section">
+
+                <p id="employeeName">
+                    John Doe
+                </p>
+
+                <span>
+                    Employee
+                </span>
+
+            </div>
+
+            <button id="logoutBtn">
+
+                Logout
+
+            </button>
+
+        </div>
+
+    </aside>
+
+    <!-- Main -->
+
+    <main class="main-content">
+
+        <div class="page-container">
+
+            <h1>
+
+                Apply for Leave
+
+            </h1>
+
+            <p class="subtitle">
+
+                Your manager will be notified as soon as you submit.
+
+            </p>
+
+            <div class="apply-card">
+
+                <form id="leaveForm">
+
+                    <!-- Leave Type -->
+
+                    <label>
+
+                        Leave Type
+
+                    </label>
+
+                    <select id="leaveType">
+
+                        <option>
+                            Casual Leave
+                        </option>
+
+                        <option>
+                            Sick Leave
+                        </option>
+
+                        <option>
+                            Annual Leave
+                        </option>
+
+                    </select>
+
+                    <!-- Dates -->
+
+                    <div class="date-row">
+
+                        <div>
+
+                            <label>
+
+                                Start Date
+
+                            </label>
+
+                            <input
+                                type="date"
+                                id="startDate">
+
+                        </div>
+
+                        <div>
+
+                            <label>
+
+                                End Date
+
+                            </label>
+
+                            <input
+                                type="date"
+                                id="endDate">
+
+                        </div>
+
+                    </div>
+
+                    <!-- Info Box -->
+
+                    <div class="info-box">
+
+                        Your leave request will be sent
+                        to your manager for approval.
+
+                    </div>
+
+                    <!-- Reason -->
+
+                    <label>
+
+                        Reason
+
+                    </label>
+
+                    <textarea
+
+                        id="reason"
+
+                        rows="5"
+
+                        placeholder="Briefly describe the reason...">
+
+                    </textarea>
+
+                    <!-- Buttons -->
+
+                    <div class="button-row">
+
+                        <button
+                            type="button"
+                            id="cancelBtn"
+                            class="cancel-btn">
+
+                            Cancel
+
+                        </button>
+
+                        <button
+                            type="submit"
+                            class="submit-btn">
+
+                            Submit Request
+
+                        </button>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </main>
+
+    <script src="js/auth.js"></script>
+
+    <script src="js/apply-leave.js"></script>
+
+</body>
+
+</html>

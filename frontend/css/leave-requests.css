@@ -1,0 +1,460 @@
+/* ========================= */
+/* RESET */
+/* ========================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html,
+body{
+
+    width:100%;
+    min-height:100vh;
+
+    background:#f5f1ed;
+
+    font-family:"Segoe UI",sans-serif;
+
+    color:#4b2e1f;
+
+}
+
+body{
+
+    display:flex;
+
+    min-height:100vh;
+
+}
+
+/* ========================= */
+/* SIDEBAR */
+/* ========================= */
+
+.sidebar{
+
+    width:270px;
+
+    min-height:100vh;
+
+    background:#cf8b2d;
+
+    color:white;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:space-between;
+
+    padding:30px 20px;
+
+}
+
+.brand{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:14px;
+
+    margin-bottom:45px;
+
+}
+
+.logo{
+
+    width:55px;
+
+    height:55px;
+
+    object-fit:contain;
+
+    background:white;
+
+    border-radius:12px;
+
+    padding:6px;
+
+}
+
+.brand span{
+
+    font-size:30px;
+
+    font-weight:bold;
+
+}
+
+.sidebar ul{
+
+    list-style:none;
+
+}
+
+.sidebar li{
+
+    padding:15px;
+
+    margin-bottom:12px;
+
+    border-radius:12px;
+
+    cursor:pointer;
+
+    font-size:18px;
+
+    transition:.3s;
+
+}
+
+.sidebar li:hover{
+
+    background:rgba(255,255,255,.15);
+
+}
+
+.sidebar li.active{
+
+    background:white;
+
+    color:#cf8b2d;
+
+    font-weight:bold;
+
+}
+
+.profile-section{
+
+    margin-bottom:20px;
+
+}
+
+.profile-section p{
+
+    font-size:22px;
+
+    font-weight:bold;
+
+}
+
+.profile-section span{
+
+    font-size:16px;
+
+}
+
+#logoutBtn{
+
+    width:100%;
+
+    height:50px;
+
+    border:none;
+
+    border-radius:12px;
+
+    background:white;
+
+    color:#cf8b2d;
+
+    font-size:17px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+}
+
+/* ========================= */
+/* MAIN */
+/* ========================= */
+
+.main-content{
+
+    flex:1;
+
+    min-height:100vh;
+
+    background:#f5f1ed;
+
+    padding:45px;
+
+}
+
+.page-container{
+
+    width:100%;
+
+}
+
+/* ========================= */
+
+.top-bar{
+
+    margin-bottom:35px;
+
+}
+
+.top-bar h1{
+
+    font-size:44px;
+
+    margin-bottom:10px;
+
+}
+
+.subtitle{
+
+    font-size:20px;
+
+    color:#8d6542;
+
+}
+
+/* ========================= */
+/* TABLE CARD */
+/* ========================= */
+
+.table-card{
+
+    background:white;
+
+    border-radius:18px;
+
+    padding:25px;
+
+    box-shadow:0 5px 18px rgba(0,0,0,.05);
+
+    overflow-x:auto;
+
+}
+
+/* ========================= */
+
+table{
+
+    width:100%;
+
+    border-collapse:collapse;
+
+}
+
+thead{
+
+    background:#fbf4ea;
+
+}
+
+th{
+
+    padding:18px;
+
+    text-align:left;
+
+    font-size:18px;
+
+    color:#8d6542;
+
+    border-bottom:2px solid #f1dfc8;
+
+}
+
+td{
+
+    padding:22px 18px;
+
+    font-size:17px;
+
+    border-bottom:1px solid #f3e6d5;
+
+}
+
+tbody tr{
+
+    transition:.25s;
+
+}
+
+tbody tr:hover{
+
+    background:#fffaf4;
+
+}
+
+/* ========================= */
+/* STATUS BADGES */
+/* ========================= */
+
+.status{
+
+    padding:8px 16px;
+
+    border-radius:30px;
+
+    font-size:14px;
+
+    font-weight:bold;
+
+    display:inline-block;
+
+}
+
+.pending{
+
+    background:#fff1d9;
+
+    color:#9b6500;
+
+}
+
+.approved{
+
+    background:#e5f7dd;
+
+    color:#347a18;
+
+}
+
+.rejected{
+
+    background:#fde4e4;
+
+    color:#c0392b;
+
+}
+
+/* ========================= */
+/* ACTION BUTTONS */
+/* ========================= */
+
+.action-buttons{
+
+    display:flex;
+
+    gap:10px;
+
+}
+
+/* Approve */
+
+.approve-btn{
+
+    border:2px solid #6aaa2a;
+
+    background:#eef9e7;
+
+    color:#3d7f17;
+
+    padding:9px 18px;
+
+    border-radius:10px;
+
+    cursor:pointer;
+
+    font-size:15px;
+
+    font-weight:bold;
+
+    transition:.25s;
+
+}
+
+.approve-btn:hover{
+
+    background:#6aaa2a;
+
+    color:white;
+
+}
+
+/* Reject */
+
+.reject-btn{
+
+    border:2px solid #df4b4b;
+
+    background:#fff0f0;
+
+    color:#d33d3d;
+
+    padding:9px 18px;
+
+    border-radius:10px;
+
+    cursor:pointer;
+
+    font-size:15px;
+
+    font-weight:bold;
+
+    transition:.25s;
+
+}
+
+.reject-btn:hover{
+
+    background:#df4b4b;
+
+    color:white;
+
+}
+
+/* ========================= */
+
+.no-action{
+
+    color:#999;
+
+    font-size:15px;
+
+    font-style:italic;
+
+}
+
+/* ========================= */
+/* RESPONSIVE */
+/* ========================= */
+
+@media(max-width:1000px){
+
+    body{
+
+        flex-direction:column;
+
+    }
+
+    .sidebar{
+
+        width:100%;
+
+        min-height:auto;
+
+    }
+
+    .main-content{
+
+        padding:25px;
+
+    }
+
+    .top-bar h1{
+
+        font-size:34px;
+
+    }
+
+    th,
+    td{
+
+        font-size:15px;
+
+        padding:14px;
+
+    }
+
+}

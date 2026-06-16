@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Manager Dashboard
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="css/manager-dashboard.css">
+
+</head>
+
+<body>
+
+    <!-- Sidebar -->
+
+    <aside class="sidebar">
+
+        <div class="sidebar-top">
+
+            <div class="brand">
+
+                <img
+                    src="assets/logo.png"
+                    class="logo"
+                    alt="Logo">
+
+                <span>
+
+                    LeaveEase
+
+                </span>
+
+            </div>
+
+            <ul>
+
+                <li class="active">
+
+                    Dashboard
+
+                </li>
+
+                <li id="leaveRequestsBtn">
+
+                    Leave Requests
+
+                </li>
+
+                <li>
+
+                    Team Calendar
+
+                </li>
+
+            </ul>
+
+        </div>
+
+        <div class="sidebar-bottom">
+
+            <div class="profile-section">
+
+                <p id="managerName">
+
+                    Manager
+
+                </p>
+
+                <span>
+
+                    Manager
+
+                </span>
+
+            </div>
+
+            <button id="logoutBtn">
+
+                Logout
+
+            </button>
+
+        </div>
+
+    </aside>
+
+    <!-- Main -->
+
+    <main class="main-content">
+
+        <div class="page-container">
+
+            <!-- Header -->
+
+            <div class="top-bar">
+
+                <div>
+
+                    <h1>
+
+                        Team Overview
+
+                    </h1>
+
+                    <p class="subtitle">
+
+                        Engineering Team • June 2025
+
+                    </p>
+
+                </div>
+
+                <button
+                    class="review-btn"
+                    id="reviewBtn">
+
+                    Review Requests
+
+                </button>
+
+            </div>
+
+            <!-- Stats -->
+
+            <div class="stats-grid">
+
+                <div class="stat-card">
+
+                    <p>
+
+                        Pending
+
+                    </p>
+
+                    <h2 id="pendingCount">
+
+                        0
+
+                    </h2>
+
+                </div>
+
+                <div class="stat-card approved-card">
+
+                    <p>
+
+                        Approved
+
+                    </p>
+
+                    <h2 id="approvedCount">
+
+                        0
+
+                    </h2>
+
+                </div>
+
+                <div class="stat-card rejected-card">
+
+                    <p>
+
+                        Rejected
+
+                    </p>
+
+                    <h2 id="rejectedCount">
+
+                        0
+
+                    </h2>
+
+                </div>
+
+                <div class="stat-card">
+
+                    <p>
+
+                        On Leave Today
+
+                    </p>
+
+                    <h2 id="leaveTodayCount">
+
+                        0
+
+                    </h2>
+
+                </div>
+
+            </div>
+
+            <!-- Bottom Grid -->
+
+            <div class="bottom-grid">
+
+                <!-- Pie Chart -->
+
+                <div class="chart-card">
+
+                    <h2>
+
+                        Leave Breakdown
+
+                    </h2>
+
+                    <canvas
+                        id="leaveChart">
+
+                    </canvas>
+
+                    <p class="chart-footer">
+
+                        Monthly Leave Distribution
+
+                    </p>
+
+                </div>
+
+                <!-- Employees -->
+
+                <div class="leave-card">
+
+                    <h2>
+
+                        Employees On Leave Today
+
+                    </h2>
+
+                    <div id="leaveTodayContainer">
+
+                        <!-- Filled by JS -->
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+    <!-- Chart.js -->
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script src="js/auth.js"></script>
+
+    <script src="js/manager-dashboard.js"></script>
+
+</body>
+
+</html>

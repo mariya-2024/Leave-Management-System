@@ -5,13 +5,17 @@
 
     <meta charset="UTF-8">
 
-    <meta name="viewport"
+    <meta
+        name="viewport"
         content="width=device-width, initial-scale=1.0">
 
-    <title>My Leave History</title>
+    <title>
+        Leave Requests
+    </title>
 
-    <link rel="stylesheet"
-        href="css/leave-history.css">
+    <link
+        rel="stylesheet"
+        href="css/leave-requests.css">
 
 </head>
 
@@ -30,26 +34,31 @@
                     class="logo"
                     alt="Logo">
 
-                <span>LeaveEase</span>
+                <span>
+                    LeaveEase
+                </span>
 
             </div>
 
             <ul>
 
-                <li id="dashboardBtn">
-                    Dashboard
-                </li>
+                <li
+                    id="dashboardBtn">
 
-                <li id="applyLeaveBtn">
-                    Apply Leave
+                    Dashboard
+
                 </li>
 
                 <li class="active">
-                    My Leaves
+
+                    Leave Requests
+
                 </li>
 
-                <li id="calendarBtn">
-                    Calendar
+                <li>
+
+                    Team Calendar
+
                 </li>
 
             </ul>
@@ -60,12 +69,16 @@
 
             <div class="profile-section">
 
-                <p id="employeeName">
-                    John Doe
+                <p id="managerName">
+
+                    Manager
+
                 </p>
 
                 <span>
-                    Employee
+
+                    Manager
+
                 </span>
 
             </div>
@@ -86,81 +99,29 @@
 
         <div class="page-container">
 
+            <!-- Top -->
+
             <div class="top-bar">
 
                 <div>
 
                     <h1>
 
-                        My Leave History
+                        Leave Requests
 
                     </h1>
 
                     <p class="subtitle">
 
-                        View all your leave requests and their current status.
+                        Review and manage employee leave requests.
 
                     </p>
 
                 </div>
 
-                <button
-                    class="new-btn"
-                    id="newRequestBtn">
-
-                    + New Request
-
-                </button>
-
             </div>
 
-            <!-- Filters -->
-
-            <div class="filters">
-
-                <select id="typeFilter">
-
-                    <option value="all">
-                        All Types
-                    </option>
-
-                    <option value="Casual Leave">
-                        Casual Leave
-                    </option>
-
-                    <option value="Sick Leave">
-                        Sick Leave
-                    </option>
-
-                    <option value="Annual Leave">
-                        Annual Leave
-                    </option>
-
-                </select>
-
-                <select id="statusFilter">
-
-                    <option value="all">
-                        All Status
-                    </option>
-
-                    <option value="Pending">
-                        Pending
-                    </option>
-
-                    <option value="Approved">
-                        Approved
-                    </option>
-
-                    <option value="Rejected">
-                        Rejected
-                    </option>
-
-                </select>
-
-            </div>
-
-            <!-- Table -->
+            <!-- Table Card -->
 
             <div class="table-card">
 
@@ -169,6 +130,14 @@
                     <thead>
 
                         <tr>
+
+                            <th>
+                                Employee
+                            </th>
+
+                            <th>
+                                Email
+                            </th>
 
                             <th>
                                 Leave Type
@@ -190,11 +159,15 @@
                                 Status
                             </th>
 
+                            <th>
+                                Actions
+                            </th>
+
                         </tr>
 
                     </thead>
 
-                    <tbody id="historyTable">
+                    <tbody id="requestsTable">
 
                         <!-- Filled by JS -->
 
@@ -207,10 +180,10 @@
         </div>
 
     </main>
+    
+   <script src="js/auth.js"></script>
 
-    <script src="js/auth.js"></script>
-
-    <script src="js/leave-history.js"></script>
+    <script src="js/leave-requests.js"></script>
 
 </body>
 
