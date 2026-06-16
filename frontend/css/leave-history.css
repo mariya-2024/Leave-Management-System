@@ -40,7 +40,9 @@ body{
 
     min-height:100vh;
 
-    background:#cf8b2d;
+    background:linear-gradient(165deg, #97512f 0%, #b9771e 55%, #97512f 100%);
+
+    box-shadow:2px 0 8px rgba(75,46,31,.15);
 
     color:white;
 
@@ -120,11 +122,15 @@ body{
 
 .sidebar li.active{
 
-    background:white;
+    background:rgba(255,255,255,.12);
 
-    color:#cf8b2d;
+    color:white;
 
     font-weight:700;
+
+    border-left:3px solid #f1c27d;
+
+    padding-left:15px;
 
 }
 
@@ -154,19 +160,29 @@ body{
 
     height:52px;
 
-    border:none;
+    border:1px solid rgba(255,255,255,.45);
 
     border-radius:12px;
 
-    background:white;
+    background:transparent;
 
-    color:#cf8b2d;
+    color:white;
 
     font-size:18px;
 
     font-weight:700;
 
     cursor:pointer;
+
+    transition:.3s;
+
+}
+
+#logoutBtn:hover{
+
+    background:rgba(255,255,255,.12);
+
+    transform:translateY(-2px);
 
 }
 
@@ -228,7 +244,9 @@ body{
 
     border:none;
 
-    background:#cf8b2d;
+    background:linear-gradient(180deg, #cf8b2d, #b9771e);
+
+    box-shadow:0 3px 8px rgba(151,81,47,.3);
 
     color:white;
 
@@ -246,7 +264,7 @@ body{
 
 .new-btn:hover{
 
-    background:#b9771e;
+    background:linear-gradient(180deg, #b9771e, #97512f);
 
 }
 
@@ -342,9 +360,9 @@ tbody tr:hover{
 
     display:inline-block;
 
-    background:#dff3df;
+    background:#E8EDDD;
 
-    color:#227a36;
+    color:#5F7A45;
 
     padding:6px 14px;
 
@@ -374,9 +392,9 @@ tbody tr:hover{
 
     display:inline-block;
 
-    background:#fde2e2;
+    background:#F5E1DD;
 
-    color:#bf2c2c;
+    color:#B5564A;
 
     padding:6px 14px;
 

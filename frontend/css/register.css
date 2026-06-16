@@ -1,0 +1,305 @@
+/* ===========================
+   Google Font
+=========================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+/* ===========================
+   Reset
+=========================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ===========================
+   Body
+=========================== */
+
+body {
+
+    font-family: "Poppins", sans-serif;
+
+    background: #f8f5f2;
+
+    min-height: 100vh;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    padding: 40px 20px;
+
+}
+
+/* ===========================
+   Main Container
+=========================== */
+
+.page-container {
+
+    width: 100%;
+
+    max-width: 650px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+}
+
+.password-info {
+
+    display: block;
+
+    margin-top: 8px;
+
+    color: #8b5e3c;
+
+    font-size: 14px;
+
+    line-height: 1.5;
+
+}
+/* ===========================
+   Logo Section
+=========================== */
+
+.logo {
+
+    width: 90px;
+
+    height: 90px;
+
+    object-fit: contain;
+
+    margin-bottom: 12px;
+
+}
+
+.logo-section {
+
+    text-align: center;
+
+    margin-bottom: 30px;
+
+}
+
+.logo-section h1 {
+
+    font-size: 62px;
+
+    color: #5a2d18;
+
+    font-weight: 700;
+
+    margin-bottom: 10px;
+
+}
+
+.logo-section p {
+
+    font-size: 19px;
+
+    color: #9b6635;
+
+    line-height: 1.6;
+
+}
+
+/* ===========================
+   Register Card
+=========================== */
+
+.register-card {
+
+    width: 100%;
+
+    background: #ffffff;
+
+    border: 2px solid #dfb07b;
+
+    border-radius: 22px;
+
+    padding: 45px;
+
+    box-shadow: 0 8px 25px rgba(0,0,0,0.06);
+
+}
+
+/* ===========================
+   Heading
+=========================== */
+
+.register-card h2 {
+
+    text-align: center;
+
+    font-size: 42px;
+
+    color: #7a4727;
+
+    margin-bottom: 35px;
+
+    font-weight: 700;
+
+}
+
+/* ===========================
+   Form Group
+=========================== */
+
+.form-group {
+
+    margin-bottom: 22px;
+
+}
+
+
+.form-group label {
+
+    display: block;
+
+    font-size: 18px;
+
+    font-weight: 500;
+
+    color: #5a2d18;
+
+    margin-bottom: 10px;
+
+}
+
+/* ===========================
+   Inputs
+=========================== */
+
+.form-group input,
+.form-group select {
+
+    width: 100%;
+
+    padding: 16px 18px;
+
+    font-size: 17px;
+
+    border: 1.8px solid #d8a36b;
+
+    border-radius: 12px;
+
+    outline: none;
+
+    transition: 0.3s;
+
+    background: white;
+
+}
+
+.form-group input:focus,
+.form-group select:focus {
+
+    border-color: #c9801d;
+
+    box-shadow: 0 0 6px rgba(201,128,29,0.25);
+
+}
+
+/* ===========================
+   Register Button
+=========================== */
+
+.register-btn {
+
+    width: 100%;
+
+    margin-top: 18px;
+
+    padding: 17px;
+
+    border: none;
+
+    border-radius: 12px;
+
+    background: #c9801d;
+
+    color: white;
+
+    font-size: 22px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+
+}
+
+.register-btn:hover {
+
+    background: #a96814;
+
+}
+
+/* ===========================
+   Bottom Text
+=========================== */
+
+.bottom-text {
+
+    margin-top: 28px;
+
+    text-align: center;
+
+    font-size: 17px;
+
+    color: #555;
+
+}
+
+.bottom-text a {
+
+    text-decoration: none;
+
+    color: #c9801d;
+
+    font-weight: 600;
+
+}
+
+.bottom-text a:hover {
+
+    text-decoration: underline;
+
+}
+
+/* ===========================
+   Responsive
+=========================== */
+
+@media (max-width: 768px) {
+
+    .register-card {
+
+        padding: 28px;
+
+    }
+
+    .logo-section h1 {
+
+        font-size: 48px;
+
+    }
+
+    .register-card h2 {
+
+        font-size: 34px;
+
+    }
+
+}
