@@ -1,5 +1,5 @@
 const pool = require("../config/db");
-
+const sendEmail = require("../utils/sendEmail");
 // ======================================
 // Apply Leave
 // ======================================
@@ -11,6 +11,20 @@ const applyLeave = async (req, res) => {
         // Logged-in user
         const userId = req.user.id;
 
+        const userResult = await pool.query(
+            `
+            SELECT name,email
+            FROM users
+            WHERE id = $1
+            `,
+            [userId]
+        );
+
+        const employeeName =
+            userResult.rows[0].name;
+
+        const employeeEmail =
+            userResult.rows[0].email;
         // Request body
         const {
             leave_type,
@@ -156,6 +170,59 @@ const applyLeave = async (req, res) => {
         ];
 
         await pool.query(query, values);
+
+        const sendEmail =
+        require("../utils/sendEmail");
+
+        await sendEmail(
+
+        employeeEmail,
+
+        "Leave Request Submitted",
+
+        `Hello ${employeeName},
+
+        Your leave request has been submitted successfully.
+
+        Leave Type: ${leave_type}
+
+        Start Date: ${start_date}
+
+        End Date: ${end_date}
+
+        Status: Pending
+
+        Regards,
+        LeaveEase`
+
+        );
+
+        await sendEmail(
+
+        "manager@gmail.com",
+
+        "New Leave Request",
+
+        `A new leave request has been submitted.
+
+        Employee:
+        ${employeeName}
+
+        Leave Type:
+        ${leave_type}
+
+        Start Date:
+        ${start_date}
+
+        End Date:
+        ${end_date}
+
+        Please review the request.
+
+        Regards,
+        LeaveEase`
+
+        );
 
         // Success
 

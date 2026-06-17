@@ -1,5 +1,5 @@
 const pool = require("../config/db");
-
+const sendEmail = require("../utils/sendEmail");
 const getPendingRequests = async (req, res) => {
 
     try {
@@ -94,26 +94,99 @@ const approveLeave = async (req, res) => {
 
         const leaveId = req.params.id;
 
-        const query = `
+        // Update status first
+
+        await pool.query(
+
+            `
             UPDATE leave_requests
             SET status = 'Approved'
             WHERE id = $1
-        `;
+            `,
 
-        await pool.query(query, [leaveId]);
+            [leaveId]
+
+        );
+
+        // Get employee details
+
+        const employeeResult =
+            await pool.query(
+
+                `
+                SELECT
+
+                users.name,
+                users.email,
+
+                leave_requests.leave_type
+
+                FROM leave_requests
+
+                JOIN users
+                ON users.id = leave_requests.user_id
+
+                WHERE leave_requests.id = $1
+                `,
+
+                [leaveId]
+
+            );
+
+        const employeeName =
+            employeeResult.rows[0].name;
+
+        const employeeEmail =
+            employeeResult.rows[0].email;
+
+        const leaveType =
+            employeeResult.rows[0].leave_type;
+
+        // Send email
+
+        await sendEmail(
+
+            employeeEmail,
+
+            "Leave Request Approved",
+
+            `Hello ${employeeName},
+
+Your leave request has been approved.
+
+Leave Type:
+${leaveType}
+
+Status:
+Approved
+
+Regards,
+LeaveEase`
+
+        );
 
         return res.status(200).json({
+
             success: true,
-            message: "Leave approved successfully"
+
+            message:
+                "Leave approved successfully"
+
         });
 
-    } catch (error) {
+    }
+
+    catch (error) {
 
         console.log(error);
 
         return res.status(500).json({
+
             success: false,
-            message: "Internal Server Error"
+
+            message:
+                "Internal Server Error"
+
         });
 
     }
@@ -132,7 +205,61 @@ const rejectLeave = async (req, res) => {
             WHERE id = $1
         `;
 
+
         await pool.query(query, [leaveId]);
+
+        const employeeResult =
+await pool.query(
+
+`
+SELECT
+
+users.name,
+users.email,
+
+leave_requests.leave_type
+
+FROM leave_requests
+
+JOIN users
+ON users.id = leave_requests.user_id
+
+WHERE leave_requests.id = $1
+`,
+
+[leaveId]
+
+);
+
+const employeeName =
+employeeResult.rows[0].name;
+
+const employeeEmail =
+employeeResult.rows[0].email;
+
+const leaveType =
+employeeResult.rows[0].leave_type;
+
+await sendEmail(
+
+employeeEmail,
+
+"Leave Request Rejected",
+
+`Hello ${employeeName},
+
+Your leave request has been rejected.
+
+Leave Type:
+${leaveType}
+
+Status:
+Rejected
+
+Regards,
+LeaveEase`
+
+);
 
         return res.status(200).json({
             success: true,
