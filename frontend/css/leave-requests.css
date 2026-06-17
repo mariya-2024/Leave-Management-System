@@ -474,3 +474,71 @@ tbody tr:hover{
     }
 
 }
+
+.history-row {
+
+    display: none;
+
+}
+
+.history-content {
+
+    padding: 20px;
+
+    background: #faf7f2;
+
+    border-top: 1px solid #ddd;
+
+}
+
+.history-content h4 {
+
+    margin-bottom: 15px;
+
+    color: #5c2d1a;
+
+}
+
+.history-item {
+
+    padding: 10px;
+
+    margin-bottom: 8px;
+
+    background: white;
+
+    border-radius: 8px;
+
+    border: 1px solid #eee;
+
+}
+
+.history-btn {
+
+    padding: 8px 14px;
+
+    border: 1px solid #d48b2d;
+
+    background: white;
+
+    color: #d48b2d;
+
+    border-radius: 6px;
+
+    cursor: pointer;
+
+    margin-right: 8px;
+
+}
+
+.actions-cell {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 12px;
+
+    align-items: center;
+
+}

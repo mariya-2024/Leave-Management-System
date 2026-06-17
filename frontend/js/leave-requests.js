@@ -118,86 +118,68 @@ async function loadRequests() {
 
             table.innerHTML += `
 
-            <tr>
+<tr>
 
-                <td>
+    <td>${request.name}</td>
 
-                    ${request.name}
+    <td>${request.email}</td>
 
-                </td>
+    <td>${request.leave_type}</td>
 
-                <td>
+    <td>${formatDate(request.start_date)}</td>
 
-                    ${request.email}
+    <td>${formatDate(request.end_date)}</td>
 
-                </td>
+    <td>${request.reason}</td>
 
-                <td>
+    <td>${request.status}</td>
 
-                    ${request.leave_type}
+    <td class = "actions-cell">
 
-                </td>
+        <button
+            class="history-btn"
+            onclick="viewHistory(${request.user_id})">
 
-                <td>
+            View History
 
-                    ${formatDate(
-                        request.start_date
-                    )}
+        </button>
 
-                </td>
+        <button
+            class="approve-btn"
+            onclick="approveLeave(${request.id})">
 
-                <td>
+            Approve
 
-                    ${formatDate(
-                        request.end_date
-                    )}
+        </button>
 
-                </td>
+        <button
+            class="reject-btn"
+            onclick="rejectLeave(${request.id})">
 
-                <td>
+            Reject
 
-                    ${request.reason}
+        </button>
 
-                </td>
+    </td>
 
-                <td>
+</tr>
 
-                    <span
-                        class="status pending">
+<tr
+    id="history-${request.user_id}"
+    class="history-row">
 
-                        Pending
+    <td colspan="8">
 
-                    </span>
+        <div
+            class="history-content">
 
-                </td>
+        </div>
 
-                <td>
+    </td>
 
-                    <div class="action-buttons">
+</tr>
 
-    <button
-        class="approve-btn"
-        onclick="approveLeave(${request.id})">
-
-        ✓ Approve
-
-    </button>
-
-    <button
-        class="reject-btn"
-        onclick="rejectLeave(${request.id})">
-
-        ✕ Reject
-
-    </button>
-
-</div>
-
-                </td>
-
-            </tr>
-
-            `;
+`;
 
         });
 
@@ -329,5 +311,108 @@ function formatDate(dateString) {
 }
 
 // =======================================
+async function viewHistory(employeeId) {
 
+    try {
+
+        const token =
+            getToken();
+
+        const response =
+            await fetch(
+
+                `http://localhost:3000/api/manager/employee/${employeeId}/leaves`,
+
+                {
+
+                    headers: {
+
+                        Authorization:
+                        `Bearer ${token}`
+
+                    }
+
+                }
+
+            );
+
+        const data =
+            await response.json();
+
+        const historyRow =
+            document.getElementById(
+                `history-${employeeId}`
+            );
+
+        const historyContent =
+            historyRow.querySelector(
+                ".history-content"
+            );
+
+        if (
+
+            historyRow.style.display ===
+            "table-row"
+
+        ) {
+
+            historyRow.style.display =
+                "none";
+
+            return;
+
+        }
+
+        let html =
+            `<h4>Previous Leave History</h4>`;
+
+        data.leaves.forEach(leave => {
+
+            html += `
+
+            <div class="history-item">
+
+                <strong>
+
+                    ${leave.leave_type}
+
+                </strong>
+
+                |
+
+                ${formatDate(leave.start_date)}
+
+                -
+
+                ${formatDate(leave.end_date)}
+
+                |
+
+                ${leave.status}
+
+                |
+
+                ${leave.reason}
+
+            </div>
+
+            `;
+
+        });
+
+        historyContent.innerHTML =
+            html;
+
+        historyRow.style.display =
+            "table-row";
+
+    }
+
+    catch (error) {
+
+        console.log(error);
+
+    }
+
+}
 loadRequests();

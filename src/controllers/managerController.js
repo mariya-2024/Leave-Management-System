@@ -11,6 +11,9 @@ const getPendingRequests = async (req, res) => {
 
             users.name,
 
+            users.id as user_id,
+        
+
             users.email,
 
             leave_requests.leave_type,
