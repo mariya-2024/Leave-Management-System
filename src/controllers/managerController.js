@@ -363,10 +363,69 @@ const getManagerDashboard = async (req, res) => {
     }
 
 };
+
+const getCalendarLeaves = async (req, res) => {
+
+    try {
+
+        const result = await pool.query(
+
+            `
+            SELECT
+
+            users.name,
+
+            leave_requests.start_date,
+
+            leave_requests.end_date
+
+            FROM leave_requests
+
+            JOIN users
+
+            ON users.id =
+            leave_requests.user_id
+
+            WHERE
+            leave_requests.status =
+            'Approved'
+            `
+
+        );
+
+        return res.status(200).json({
+
+            success: true,
+
+            leaves:
+                result.rows
+
+        });
+
+    }
+
+    catch (error) {
+
+        console.log(error);
+
+        return res.status(500).json({
+
+            success: false,
+
+            message:
+                "Internal Server Error"
+
+        });
+
+    }
+
+};
+
 module.exports = {
     getPendingRequests,
     getManagerDashboard,
     getEmployeeLeaveHistory,
     approveLeave,
-    rejectLeave
+    rejectLeave,
+    getCalendarLeaves
 };

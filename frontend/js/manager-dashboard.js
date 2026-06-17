@@ -48,7 +48,14 @@ document
             "leave-requests.html";
 
     });
+document
+    .getElementById("managerCalendarBtn")
+    .addEventListener("click", () => {
 
+        window.location.href =
+            "manager-calendar.html";
+
+    });
 // ======================================
 // Load Dashboard
 // ======================================

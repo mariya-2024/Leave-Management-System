@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Team Calendar</title>
+
+    <link rel="stylesheet"
+          href="css/manager-calendar.css">
+
+</head>
+
+<body>
+
+    <div class="dashboard-container">
+
+        <!-- Sidebar -->
+
+        <aside class="sidebar">
+
+            <div class="logo">
+
+                <h2>LeaveEase</h2>
+
+            </div>
+
+            <nav>
+
+                <ul>
+
+                    <li>
+                        <a id="dashboardBtn">
+                            Dashboard
+                        </a>
+                    </li>
+
+                    <li>
+                        <a id="requestsBtn">
+                            Leave Requests
+                        </a>
+                    </li>
+
+                    <li class="active">
+                        <a id="calendarBtn">
+                            Team Calendar
+                        </a>
+                    </li>
+
+                </ul>
+
+            </nav>
+
+            <button
+                id="logoutBtn"
+                class="logout-btn">
+
+                Logout
+
+            </button>
+
+        </aside>
+
+        <!-- Main Content -->
+
+        <main class="main-content">
+
+            <!-- Top Bar -->
+
+            <div class="top-bar">
+
+                <h1>
+                    Team Calendar
+                </h1>
+
+                <div class="manager-info">
+
+                    <span>
+                        Manager
+                    </span>
+
+                </div>
+
+            </div>
+
+            <!-- Calendar Header -->
+
+            <div class="calendar-header">
+
+                <button id="prevMonth">
+
+                    ◀
+
+                </button>
+
+                <h2 id="monthYear">
+
+                    June 2026
+
+                </h2>
+
+                <button id="nextMonth">
+
+                    ▶
+
+                </button>
+
+            </div>
+
+            <!-- Calendar -->
+
+            <div
+                id="calendar"
+                class="calendar">
+
+            </div>
+
+        </main>
+
+    </div>
+
+    <script src="js/auth.js"></script>
+
+    <script src="js/manager-calendar.js"></script>
+
+</body>
+
+</html>

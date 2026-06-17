@@ -11,7 +11,8 @@ const {
     getEmployeeLeaveHistory,
     approveLeave,
     rejectLeave,
-    getManagerDashboard
+    getManagerDashboard,
+    getCalendarLeaves
 } = require("../controllers/managerController");
 
 router.get(
@@ -24,6 +25,13 @@ router.get(
     "/dashboard",
     verifyToken,
     getManagerDashboard
+);
+router.get(
+    "/calendar",
+    verifyToken,
+    checkManager,
+    getCalendarLeaves
+
 );
 router.get("/employee/:id/leaves",
     verifyToken,
