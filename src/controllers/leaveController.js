@@ -171,10 +171,9 @@ const applyLeave = async (req, res) => {
 
         await pool.query(query, values);
 
-        const sendEmail =
-        require("../utils/sendEmail");
+        try {
 
-        await sendEmail(
+    await sendEmail(
 
         employeeEmail,
 
@@ -182,22 +181,34 @@ const applyLeave = async (req, res) => {
 
         `Hello ${employeeName},
 
-        Your leave request has been submitted successfully.
+Your leave request has been submitted successfully.
 
-        Leave Type: ${leave_type}
+Leave Type: ${leave_type}
 
-        Start Date: ${start_date}
+Start Date: ${start_date}
 
-        End Date: ${end_date}
+End Date: ${end_date}
 
-        Status: Pending
+Status: Pending
 
-        Regards,
-        LeaveEase`
+Regards,
+LeaveEase`
 
-        );
+    );
 
-        await sendEmail(
+}
+catch(error){
+
+    console.log(
+        "Employee email failed:",
+        error.message
+    );
+
+}
+
+try {
+
+    await sendEmail(
 
         "manager@gmail.com",
 
@@ -205,24 +216,34 @@ const applyLeave = async (req, res) => {
 
         `A new leave request has been submitted.
 
-        Employee:
-        ${employeeName}
+Employee:
+${employeeName}
 
-        Leave Type:
-        ${leave_type}
+Leave Type:
+${leave_type}
 
-        Start Date:
-        ${start_date}
+Start Date:
+${start_date}
 
-        End Date:
-        ${end_date}
+End Date:
+${end_date}
 
-        Please review the request.
+Please review the request.
 
-        Regards,
-        LeaveEase`
+Regards,
+LeaveEase`
 
-        );
+    );
+
+}
+catch(error){
+
+    console.log(
+        "Manager email failed:",
+        error.message
+    );
+
+}
 
         // Success
 

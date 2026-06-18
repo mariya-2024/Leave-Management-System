@@ -487,7 +487,9 @@ tbody tr:hover{
 
     padding:28px;
 
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+    font-weight: 500;
+
+    box-shadow: 0 6px 16px rgba(112, 14, 14, 0.08);
 }
 
 .balance-card h2{
@@ -526,7 +528,7 @@ tbody tr:hover{
 
     font-size:17px;
 
-    font-weight:300;
+    font-weight:400;
 
 }
 
@@ -536,7 +538,7 @@ tbody tr:hover{
 
     height:12px;
 
-    background:#efe5d7;
+    background:#dd8f22;
 
     border-radius:20px;
 
