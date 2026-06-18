@@ -329,6 +329,55 @@ const getLeaveHistory = async (req, res) => {
 
 };
 
+const deleteLeave = async (req, res) => {
+
+    try {
+
+        const leaveId = req.params.id;
+
+        const userId = req.user.id;
+
+        const result = await pool.query(
+
+            `
+            DELETE FROM leave_requests
+
+            WHERE id = $1
+
+            AND user_id = $2
+
+            AND status = 'Pending'
+
+            `,
+            [leaveId, userId]
+
+        );
+
+        return res.status(200).json({
+
+            success: true,
+
+            message: "Leave deleted successfully"
+
+        });
+
+    }
+
+    catch (error) {
+
+        console.log(error);
+
+        return res.status(500).json({
+
+            success: false,
+
+            message: "Internal Server Error"
+
+        });
+
+    }
+
+};
 
 // ======================================
 // Employee Dashboard
@@ -433,13 +482,105 @@ const getDashboard = async (req, res) => {
 
 };
 
+const updateLeave = async (req, res) => {
+
+    try {
+
+        const leaveId = req.params.id;
+
+        const userId = req.user.id;
+
+        const {
+            start_date,
+            end_date,
+            reason
+        } = req.body;
+
+        const days =
+            Math.floor(
+
+                (
+                    new Date(end_date) -
+                    new Date(start_date)
+                )
+
+                /
+
+                (1000 * 60 * 60 * 24)
+
+            ) + 1;
+
+        await pool.query(
+
+            `
+            UPDATE leave_requests
+
+            SET
+
+            start_date = $1,
+
+            end_date = $2,
+
+            reason = $3,
+
+            days = $4
+
+            WHERE
+
+            id = $5
+
+            AND user_id = $6
+
+            AND status = 'Pending'
+            `,
+
+            [
+                start_date,
+                end_date,
+                reason,
+                days,
+                leaveId,
+                userId
+            ]
+
+        );
+
+        return res.status(200).json({
+
+            success: true,
+
+            message:
+                "Leave updated successfully"
+
+        });
+
+    }
+
+    catch(error){
+
+        console.log(error);
+
+        return res.status(500).json({
+
+            success:false,
+
+            message:
+                "Internal Server Error"
+
+        });
+
+    }
+
+};
+
 
 module.exports = {
 
     applyLeave,
-
+    updateLeave,
     getLeaveHistory,
 
-    getDashboard
+    getDashboard,
+    deleteLeave
 
 };
